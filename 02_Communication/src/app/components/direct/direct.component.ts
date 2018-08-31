@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  selector: 'app-direct',
+  templateUrl: './direct.component.html',
+  styleUrls: ['./direct.component.css']
 })
-export class TestComponent implements OnInit {
+export class DirectComponent implements OnInit {
 
   @Input() message: string;
   @Input() message2: string;

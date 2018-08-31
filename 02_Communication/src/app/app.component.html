@@ -1,5 +1,7 @@
 <div class="app">
   <div class="ex1">
+    <h1>Direct Communication</h1>
+
     <div class="parent"
          [style.background]="backgroundColor">
       <h2>Parent</h2>
@@ -10,14 +12,31 @@
 
     <div class="child">
       <h2>Child</h2>
-      <app-test message="Something Hardcoded"
-                [message2]="message"
-                (countChanged)="setChildCount($event)"
-                (buttonClicked)="setBackgroundColor()"></app-test>
+      <app-direct message="Something Hardcoded"
+                  [message2]="message"
+                  (countChanged)="setChildCount($event)"
+                  (buttonClicked)="setBackgroundColor()"></app-direct>
     </div>
   </div>
 
   <div class="ex2">
+    <h1>Indirect Communication</h1>
+
+    <div class="parent">
+      <h2>Parent</h2>
+      <div class="message">
+        Message in Parent: {{ serviceMessage }}
+      </div>
+    </div>
+
+    <div class="child">
+      <h2>Child</h2>
+      <app-indirect (messageChanged)="updateMessage()"></app-indirect>
+    </div>
+  </div>
+
+  <div class="ex3">
+    <h1>Binding</h1>
     <app-binding></app-binding>
   </div>
 </div>
