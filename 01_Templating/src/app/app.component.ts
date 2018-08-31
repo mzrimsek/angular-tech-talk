@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  now = new Date();
+  private hidden = false;
+  companies = ['RoviSys'];
+
+  getHidden() {
+    return this.hidden;
+  }
+
+  toggleHidden() {
+    this.hidden = !this.hidden;
+  }
+
+  updateTime() {
+    this.now = new Date();
+  }
 }
