@@ -1,0 +1,23 @@
+<div class="binding">
+  <div class="no-binding">
+    <h2>Change bound one way</h2>
+
+    <label>Message: </label>
+    <input type="text"
+           [value]="oneWayMessage"
+           #oneWay
+           (change)="setOneWay(oneWay)">
+
+    <div>Value: {{ oneWayMessage }}</div>
+  </div>
+
+  <div class="with-binding">
+    <h2>Change bound two ways</h2>
+
+    <label>Message: </label>
+    <input type="text"
+           [(ngModel)]="twoWayMessage">
+
+    <div>Value: {{ twoWayMessage }}</div>
+  </div>
+</div>

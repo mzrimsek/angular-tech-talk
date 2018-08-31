@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  message = 'Something from a variable - notice the brackets!';
+  childCount: number;
+  backgroundColor = '#ffffff';
+
+  setChildCount(count: number) {
+    this.childCount = count;
+  }
+
+  setBackgroundColor() {
+    this.backgroundColor = '#' + Math.random().toString(16).slice(2, 8);
+  }
 }
