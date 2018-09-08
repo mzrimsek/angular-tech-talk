@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class DirectComponent implements OnInit {
 
   @Input() message: string;
-  @Input() message2: string;
+  @Input() variableMessage: string;
   @Output() countChanged: EventEmitter<number> = new EventEmitter();
   @Output() buttonClicked: EventEmitter<null> = new EventEmitter();
   count = 0;

@@ -9,8 +9,7 @@ describe('DirectComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [DirectComponent]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,26 @@ describe('DirectComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create the component', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('When incrementCount is called', () => {
+    it('Should increment count', () => {
+      component.incrementCount();
+      expect(component.count).toBe(1);
+    });
+
+    it('Should emit countChanged', () => {
+      spyOn(component.countChanged, 'emit');
+      component.incrementCount();
+      expect(component.countChanged.emit).toHaveBeenCalledWith(1);
+    });
+  });
+
+  it('Should emit buttonClicked when emitButtonClicked is called', () => {
+    spyOn(component.buttonClicked, 'emit');
+    component.emitButtonClicked();
+    expect(component.buttonClicked.emit).toHaveBeenCalled();
   });
 });

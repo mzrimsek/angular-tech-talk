@@ -13,7 +13,7 @@
     <div class="child">
       <h2>Child</h2>
       <app-direct message="Something Hardcoded"
-                  [message2]="message"
+                  [variableMessage]="message"
                   (countChanged)="setChildCount($event)"
                   (buttonClicked)="setBackgroundColor()"></app-direct>
     </div>

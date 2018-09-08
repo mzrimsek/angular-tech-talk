@@ -1,6 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { MessageService } from '../../services/message.service';
 
