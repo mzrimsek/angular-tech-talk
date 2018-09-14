@@ -1,9 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+    ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
+} from '@angular/core';
 
 @Component({
   selector: 'app-direct',
   templateUrl: './direct.component.html',
-  styleUrls: ['./direct.component.css']
+  styleUrls: ['./direct.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DirectComponent implements OnInit {
 
