@@ -7,6 +7,7 @@ import { MessageService } from '../../services/message.service';
 describe('IndirectComponent', () => {
   let component: IndirectComponent;
   let fixture: ComponentFixture<IndirectComponent>;
+  let service: MessageService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,6 +19,11 @@ describe('IndirectComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(IndirectComponent);
     component = fixture.componentInstance;
+    service = TestBed.get(MessageService);
+
+    spyOn(service, 'setMessage');
+    spyOn(component.messageChanged, 'emit');
+
     fixture.detectChanges();
   });
 
@@ -27,23 +33,25 @@ describe('IndirectComponent', () => {
 
   describe('When button is clicked', () => {
     const message = 'Something great';
+    let input: any;
 
     beforeEach(() => {
-      const input = fixture.nativeElement.querySelector('input');
+      input = fixture.nativeElement.querySelector('input');
       input.value = message;
       const button = fixture.nativeElement.querySelector('button');
       button.click();
       fixture.detectChanges();
     });
 
+    it('Should reset the input value', () => {
+      expect(input.value).toBe('');
+    });
+
     it('Should call messageService setMessage', () => {
-      const service = TestBed.get(MessageService);
-      spyOn(service, 'setMessage');
       expect(service.setMessage).toHaveBeenCalledWith(message);
     });
 
     it('Should emit messageChanged', () => {
-      spyOn(component.messageChanged, 'emit');
       expect(component.messageChanged.emit).toHaveBeenCalled();
     });
   });
