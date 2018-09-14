@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LockedComponent } from './components/locked/locked.component';
 import { UnlockedComponent } from './components/unlocked/unlocked.component';
 
+import { LockGuard } from './guards/lock.guard';
+
 const routes: Routes = [
   {
     path: 'unlocked',
@@ -11,7 +13,8 @@ const routes: Routes = [
   },
   {
     path: 'locked',
-    component: LockedComponent
+    component: LockedComponent,
+    canActivate: [LockGuard]
   },
   {
     path: '**',
