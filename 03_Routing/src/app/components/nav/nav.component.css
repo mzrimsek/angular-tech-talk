@@ -1,0 +1,18 @@
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  padding: 10px;
+}
+
+nav ul li.active {
+  background: dodgerblue;
+}
+
+nav ul li.active a {
+  color: white;
+  text-decoration: none;
+}
