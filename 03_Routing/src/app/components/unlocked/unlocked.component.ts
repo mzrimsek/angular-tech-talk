@@ -9,7 +9,5 @@ export class UnlockedComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }
