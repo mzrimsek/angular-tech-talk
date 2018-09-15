@@ -31,7 +31,9 @@ describe('DirectComponent', () => {
     it('Should emit countChanged', () => {
       spyOn(component.countChanged, 'emit');
       component.incrementCount();
-      expect(component.countChanged.emit).toHaveBeenCalledWith(1);
+      expect(component.countChanged.emit).toHaveBeenCalledWith({
+        count: 1
+      });
     });
   });
 

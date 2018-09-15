@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MessageService } from './services/message.service';
 
+import { CountEvent } from './models';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,8 +20,8 @@ export class AppComponent implements OnInit {
     this.updateMessage();
   }
 
-  setChildCount(count: number) {
-    this.childCount = count;
+  setChildCount(event: CountEvent) {
+    this.childCount = event.count;
   }
 
   setBackgroundColor() {

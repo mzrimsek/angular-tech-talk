@@ -2,6 +2,8 @@ import {
     ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 } from '@angular/core';
 
+import { CountEvent } from '../../models';
+
 @Component({
   selector: 'app-direct',
   templateUrl: './direct.component.html',
@@ -12,7 +14,7 @@ export class DirectComponent implements OnInit {
 
   @Input() message: string;
   @Input() variableMessage: string;
-  @Output() countChanged: EventEmitter<number> = new EventEmitter();
+  @Output() countChanged: EventEmitter<CountEvent> = new EventEmitter();
   @Output() buttonClicked: EventEmitter<null> = new EventEmitter();
   count = 0;
   constructor() { }
@@ -21,7 +23,9 @@ export class DirectComponent implements OnInit {
 
   incrementCount() {
     this.count++;
-    this.countChanged.emit(this.count);
+    this.countChanged.emit({
+      count: this.count
+    });
   }
 
   emitButtonClicked() {
