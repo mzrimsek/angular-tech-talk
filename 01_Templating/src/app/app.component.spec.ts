@@ -15,11 +15,13 @@ describe('AppComponent', () => {
         PluralizePipe
       ],
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('Should create the app', async(() => {
     expect(component).toBeTruthy();
