@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { NavComponent } from './nav.component';
@@ -24,4 +25,16 @@ describe('NavComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should have unlocked link with correct href', async(() => {
+    const unlockedLink = fixture.debugElement.query(By.css('nav ul li:first-child a'));
+    const href = unlockedLink.nativeElement.getAttribute('href');
+    expect(href).toBe('/unlocked');
+  }));
+
+  it('Should have locked link with correct href', async(() => {
+    const lockedLink = fixture.debugElement.query(By.css('nav ul li:last-child a'));
+    const href = lockedLink.nativeElement.getAttribute('href');
+    expect(href).toBe('/locked');
+  }));
 });
