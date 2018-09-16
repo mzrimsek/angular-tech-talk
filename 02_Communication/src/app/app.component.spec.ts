@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BindingComponent } from './components/binding/binding.component';
@@ -56,29 +57,19 @@ describe('AppComponent', () => {
     });
   });
 
-  describe('Direct emit countChanged', () => {
-    beforeEach(() => {
-      const direct = fixture.nativeElement.querySelector('app-direct');
-      direct.dispatchEvent(new Event('countChanged'), {
-        count: 1
-      });
-      fixture.detectChanges();
+  it('Should set childCount when Direct emits countChanged', () => {
+    const direct = fixture.debugElement.query(By.css('app-direct'));
+    direct.triggerEventHandler('countChanged', {
+      count: 1
     });
+    fixture.detectChanges();
 
-    it('Should set childCount', () => {
-      console.log(component.childCount);
-      expect(component.childCount).toBe(1);
-    });
+    expect(component.childCount).toBe(1);
   });
 
-  describe('Direct emit buttonClicked', () => {
-    beforeEach(() => {
-      const direct = fixture.nativeElement.querySelector('app-direct');
-      direct.dispatchEvent(new Event('buttonClicked'));
-    });
-
-    it('Should set backgroundColor', () => {
-      expect(component.backgroundColor).not.toBe('#ffffff');
-    });
+  it('Should set backgroundColor when Direct emits buttonClicked', () => {
+    const direct = fixture.nativeElement.querySelector('app-direct');
+    direct.dispatchEvent(new Event('buttonClicked'));
+    expect(component.backgroundColor).not.toBe('#ffffff');
   });
 });
